@@ -32,23 +32,18 @@
 #>
 
 function CompressImages {
-    param([string]$fileType = "*", [string]$newType, [string]$appendText = "")
+  param([string]$fileType = "*", [string]$newType, [string]$appendText = "")
 
-    foreach ($i in Get-ChildItem -filter "*$fileType" $SomeFolder) {
-        $noExtension = ([io.fileinfo]"$i").BaseName;
-        $baseExtension = ([io.fileinfo]"$i").Extension;
+  foreach ($i in Get-ChildItem -filter "*$fileType" $Folder) {
+    $noExtension = ([io.fileinfo]"$i").BaseName;
+    $baseExtension = ([io.fileinfo]"$i").Extension;
 
-        if ("$newType" -eq "" -or $null) {
-            $newType = $baseExtension
-        }
-
-        if ("$fileType" -eq ".png" -or "png") {
-            ffmpeg -i "$i" -compression_level 100 "$noExtension$appendText.png"
-        }
-        else {
-            ffmpeg -i "$i" "$noExtension$appendText$newType"
-        }
+    if ("$newType" -eq "" -or $null) {
+        $newType = $baseExtension
     }
+
+    ffmpeg -i "$i" "$noExtension$appendText$newType"
+  }
 }
 
 Export-ModuleMember -Function CompressImages
