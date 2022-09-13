@@ -2,7 +2,7 @@ function ZipAllFilesInFolder {
     param ([string]$location)
 
     foreach ($file in Get-ChildItem $location) {
-        Compress-Archive $file.FullName $file.FullName
+        7z.exe a $file.FullName $file.FullName
     }
 }
 
