@@ -1,6 +1,5 @@
 Import-Module PSReadLine
 Import-Module posh-git
-Import-Module oh-my-posh
 Import-Module Terminal-Icons
 Import-Module C:\Users\magnu\GitHub\PowerShell-Scripts\Modules\CompressImages
 Import-Module C:\Users\magnu\GitHub\PowerShell-Scripts\Modules\FirstFrameOfVideo
